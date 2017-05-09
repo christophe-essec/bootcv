@@ -1,0 +1,46 @@
+<html>
+<body>
+    <script>
+        var nbClick=0;
+        var timeoutRef;
+        console.log("Javascript is working");
+        function clickMe(){
+            // console.log("I was clicked " + (++nbClick) + " times.");
+            if(nbClick>10){
+                window.location = "http://myessec.com";
+            }else{
+                if(timeoutRef){
+                    clearTimeout(timeoutRef);
+                }
+                document.querySelector(".myCounter").innerHTML = "I was clicked "
+                     + (++nbClick) + " times.";
+
+                timeoutRef = setTimeout(function(){
+                    document.querySelector(".myCounter").innerHTML = "Click Me";
+                    timeoutRef = null;
+                },3000);
+            }
+        
+        }
+    </script>
+    <style>
+        .myCounter{
+            border:1px solid #DDD;
+            background:#DFDFDF;
+        }
+        @media (max-width: 600px) {
+            .myCounter{
+                border:1px solid #FF0000;
+                background:#00FF00;
+            }
+        }
+        @media (min-width: 600px) and (max-width: 700px) {
+            .myCounter{
+                border:1px solid #00FF00;
+                background:#FF0000;
+            }
+        }
+    </style>
+    <div class="myCounter" onclick="clickMe()">Click Me</div>
+</body>
+</html>
